@@ -1,0 +1,23 @@
+{
+  "name": "codemagic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bozhenova/code-magic.git"
+  },
+  "author": "bozhenova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bozhenova/code-magic/issues"
+  },
+  "homepage": "https://github.com/bozhenova/code-magic#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-htmlacademy": "^0.5.2"
+  }
+}

@@ -1,26 +1,28 @@
 {
-	"name": "codemagic",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "eslint js/"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/bozhenova/code-magic.git"
-	},
-	"author": "bozhenova",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/bozhenova/code-magic/issues"
-	},
-	"homepage": "https://github.com/bozhenova/code-magic#readme",
-	"devDependencies": {
-		"eslint": "^6.6.0",
-		"eslint-config-htmlacademy": "^0.5.2"
-	},
-	"engines": {
-		"node": "8.11"
-	}
+  "name": "codemagic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "test": "eslint js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bozhenova/code-magic.git"
+  },
+  "author": "bozhenova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bozhenova/code-magic/issues"
+  },
+  "homepage": "https://github.com/bozhenova/code-magic#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "eslint": "^6.6.0",
+    "eslint-config-htmlacademy": "^0.5.2",
+    "gulp": "^4.0.2"
+  },
+  "engines": {
+    "node": "8.11"
+  }
 }

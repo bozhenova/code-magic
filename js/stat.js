@@ -11,6 +11,7 @@
   var GAP = 50;
   var FONT_GAP = 20;
   var POINTS_GAP = 10;
+  var PADDING = (CLOUD_WIDTH - 4 * BAR_WIDTH - 5 * GAP) / 2;
 
 
   var getMaxElement = function (timesArray) {
@@ -23,25 +24,27 @@
     return maxElement;
   };
 
-  var showResultPoints = function (timesArray, ctx) {
+  var showResultPoints = function (ctx, timesArray) {
     for (var i = 0; i < timesArray.length; i++) {
-      ctx.fillText(Math.round(timesArray[i]), CLOUD_X + BAR_WIDTH + i * (BAR_WIDTH + GAP), CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 2 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray))));
+      ctx.fillStyle = '#000000';
+      ctx.fillText(Math.round(timesArray[i]), CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING, CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 2 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray))));
     }
   };
 
-  var drawGistogramName = function (namesArray, ctx) {
+  var drawHistogramName = function (ctx, namesArray) {
     for (var i = 0; i < namesArray.length; i++) {
-      ctx.fillText(namesArray[i], CLOUD_X + BAR_WIDTH + (BAR_WIDTH + GAP) * i, CLOUD_Y + FONT_GAP * 4 + POINTS_GAP * 3 + BAR_HEIGHT);
+      ctx.fillStyle = '#000000';
+      ctx.fillText(namesArray[i], CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING, CLOUD_Y + FONT_GAP * 4 + POINTS_GAP * 3 + BAR_HEIGHT);
     }
   };
 
 
-  var drawGistogram = function (timesArray, namesArray, ctx) {
+  var drawHistogram = function (ctx, timesArray, namesArray) {
     for (var i = 0; i < namesArray.length; i++) {
-      ctx.fillStyle = namesArray[i] === 'Вы' ? '#fc0707' : 'hsl(205, ' + Math.round(Math.random() * 100) + '%, 50%)';
-      var GISTOGRAM_X = CLOUD_X + BAR_WIDTH + (BAR_WIDTH + GAP) * i;
-      var GISTOGRAM_Y = CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 3 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray)));
-      ctx.fillRect(GISTOGRAM_X, GISTOGRAM_Y, BAR_WIDTH, BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray));
+      ctx.fillStyle = namesArray[i] === 'Вы' ? '#ff0000' : 'hsl(210, ' + Math.round(Math.random() * 100) + '%, 50%)';
+      var HISTOGRAM_X = CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING;
+      var HISTOGRAM_Y = CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 3 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray)));
+      ctx.fillRect(HISTOGRAM_X, HISTOGRAM_Y, BAR_WIDTH, BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray));
     }
   };
 
@@ -61,9 +64,9 @@
     ctx.fillText('Список результатов:', CLOUD_X + FONT_GAP, CLOUD_Y + FONT_GAP * 2 + POINTS_GAP);
 
 
-    showResultPoints(times, ctx);
-    drawGistogramName(names, ctx);
-    drawGistogram(times, names, ctx);
+    drawHistogram(ctx, times, names);
+    showResultPoints(ctx, times);
+    drawHistogramName(ctx, names);
   };
 
 })();

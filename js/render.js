@@ -2,14 +2,14 @@
 
 (function () {
 
-  var similarWizardTemplate = document
+  const similarWizardTemplate = document
     .getElementById("similar-wizard-template")
     .content;
-  var similar = document.querySelector('.setup-similar');
-  var similarList = document.querySelector('.setup-similar-list');
+  const similar = document.querySelector('.setup-similar');
+  const similarList = document.querySelector('.setup-similar-list');
 
   function renderWizard(wizard) {
-    var wizardElement = similarWizardTemplate.cloneNode(true);
+    const wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector(".setup-similar-label").textContent =
       wizard.name;
@@ -20,9 +20,9 @@
   }
 
   window.render = (data) => {
-    var takeNumber = data.length > 4 ? 4 : data.length;
+    const takeNumber = data.length > 4 ? 4 : data.length;
     similarList.innerHTML = '';
-    for (var i = 0; i < takeNumber; i++) {
+    for (let i = 0; i < takeNumber; i++) {
       similarList.appendChild(renderWizard(data[i]));
     }
     similar.classList.remove('hidden');

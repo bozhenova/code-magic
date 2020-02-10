@@ -1,22 +1,22 @@
 'use strict';
 
 (function () {
-  var CLOUD_X = 100;
-  var CLOUD_Y = 10;
-  var SHADOW_GAP = 10;
-  var CLOUD_WIDTH = 420;
-  var CLOUD_HEIGHT = 270;
-  var BAR_WIDTH = 40;
-  var BAR_HEIGHT = 150;
-  var GAP = 50;
-  var FONT_GAP = 20;
-  var POINTS_GAP = 10;
-  var PADDING = (CLOUD_WIDTH - 4 * BAR_WIDTH - 5 * GAP) / 2;
+  const CLOUD_X = 100;
+  const CLOUD_Y = 10;
+  const SHADOW_GAP = 10;
+  const CLOUD_WIDTH = 420;
+  const CLOUD_HEIGHT = 270;
+  const BAR_WIDTH = 40;
+  const BAR_HEIGHT = 150;
+  const GAP = 50;
+  const FONT_GAP = 20;
+  const POINTS_GAP = 10;
+  const PADDING = (CLOUD_WIDTH - 4 * BAR_WIDTH - 5 * GAP) / 2;
 
 
-  var getMaxElement = function (timesArray) {
-    var maxElement = 0;
-    for (var i = 0; i < timesArray.length; i++) {
+  const getMaxElement = function (timesArray) {
+    let maxElement = 0;
+    for (let i = 0; i < timesArray.length; i++) {
       if (timesArray[i] > maxElement) {
         maxElement = timesArray[i];
       }
@@ -24,31 +24,31 @@
     return maxElement;
   };
 
-  var showResultPoints = function (ctx, timesArray) {
-    for (var i = 0; i < timesArray.length; i++) {
+  const showResultPoints = function (ctx, timesArray) {
+    for (let i = 0; i < timesArray.length; i++) {
       ctx.fillStyle = '#000000';
       ctx.fillText(Math.round(timesArray[i]), CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING, CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 2 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray))));
     }
   };
 
-  var drawHistogramName = function (ctx, namesArray) {
-    for (var i = 0; i < namesArray.length; i++) {
+  const drawHistogramName = function (ctx, namesArray) {
+    for (let i = 0; i < namesArray.length; i++) {
       ctx.fillStyle = '#000000';
       ctx.fillText(namesArray[i], CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING, CLOUD_Y + FONT_GAP * 4 + POINTS_GAP * 3 + BAR_HEIGHT);
     }
   };
 
 
-  var drawHistogram = function (ctx, timesArray, namesArray) {
-    for (var i = 0; i < namesArray.length; i++) {
+  const drawHistogram = function (ctx, timesArray, namesArray) {
+    for (let i = 0; i < namesArray.length; i++) {
       ctx.fillStyle = namesArray[i] === 'Вы' ? '#ff0000' : 'hsl(210, ' + Math.round(Math.random() * 100) + '%, 50%)';
-      var HISTOGRAM_X = CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING;
-      var HISTOGRAM_Y = CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 3 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray)));
+      const HISTOGRAM_X = CLOUD_X + GAP + (BAR_WIDTH + GAP) * i + PADDING;
+      const HISTOGRAM_Y = CLOUD_Y + FONT_GAP * 3 + POINTS_GAP * 3 + (BAR_HEIGHT - (BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray)));
       ctx.fillRect(HISTOGRAM_X, HISTOGRAM_Y, BAR_WIDTH, BAR_HEIGHT * timesArray[i] / getMaxElement(timesArray));
     }
   };
 
-  var renderCloud = function (ctx, x, y, color) {
+  const renderCloud = function (ctx, x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
   };

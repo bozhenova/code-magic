@@ -2,13 +2,13 @@
 
 (function () {
 
-  var wizards = [];
+  let wizards = [];
 
-  var coatColor;
-  var eyesColor;
+  let coatColor;
+  let eyesColor;
 
   function getRank(wizard) {
-    var rank = 0;
+    let rank = 0;
 
     if (wizard.colorCoat === coatColor) {
       rank += 2;
@@ -33,7 +33,7 @@
   }
 
   function wizardsComparator(left, right) {
-    var rankDiff = getRank(right) - getRank(left);
+    const rankDiff = getRank(right) - getRank(left);
     return rankDiff === 0 ? namesComparator(left.name, right.name) : rankDiff;
   }
 
@@ -57,7 +57,7 @@
   }
 
   function errorHandler(errorMessage) {
-    var node = document.createElement('div');
+    const node = document.createElement('div');
     node.classList.add('error-message');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
     node.style.position = 'absolute';
@@ -69,7 +69,7 @@
     document.body.insertAdjacentElement('afterbegin', node);
   }
 
-  var URL = 'https://js.dump.academy/code-and-magick/data';
+  const URL = 'https://js.dump.academy/code-and-magick/data';
   window.load(URL, successHandler, errorHandler);
 
 })();

@@ -3,12 +3,12 @@
 (function () {
 
   window.save = function (data, onLoad, onError) {
-    var URL = 'https://js.dump.academy/code-and-magick';
-    var xhr = new XMLHttpRequest();
+    const URL = 'https://js.dump.academy/code-and-magick';
+    const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', () => {
-      var errorMessage = document.querySelector('.error-message');
+      const errorMessage = document.querySelector('.error-message');
       if (xhr.status === 200) {
         if (errorMessage) {
           document.body.removeChild(errorMessage);
@@ -28,9 +28,9 @@
   }
 
   window.load = function (url, onLoad, onError) {
-    var URL = 'https://js.dump.academy/code-and-magick/data';
+    const URL = 'https://js.dump.academy/code-and-magick/data';
     url = URL || url;
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', () => {

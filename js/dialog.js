@@ -1,17 +1,15 @@
 "use strict";
 
 (function () {
-  var userDialog = document.querySelector(".setup");
-  var dialogHandle = userDialog.querySelector(".upload");
-  var setupOpen = document.querySelector('.setup-open');
-  var setupUserName = userDialog.querySelector('.setup-user-name');
-  var setupClose = userDialog.querySelector('.setup-close');
-  var baseCoords = {
-    x: userDialog.style.left,
-    y: userDialog.style.top
+  const setup = document.querySelector(".setup");
+  const dialogHandle = setup.querySelector(".upload");
+  const setupOpen = document.querySelector('.setup-open');
+  const setupUserName = setup.querySelector('.setup-user-name');
+  const setupClose = setup.querySelector('.setup-close');
+  const baseCoords = {
+    x: setup.style.left,
+    y: setup.style.top
   };
-
-  openPopup();
 
   setupOpen.addEventListener('click', openPopup);
 
@@ -30,16 +28,16 @@
   });
 
   function openPopup() {
-    userDialog.classList.remove('hidden');
-    userDialog.querySelector(".setup-similar").classList.remove("hidden");
+    setup.classList.remove('hidden');
+    setup.querySelector(".setup-similar").classList.remove("hidden");
     document.addEventListener('keydown', escapePressHandler);
   }
 
   function closePopup() {
-    userDialog.classList.add('hidden');
+    setup.classList.add('hidden');
     document.removeEventListener('keydown', escapePressHandler);
-    userDialog.style.top = baseCoords.y;
-    userDialog.style.left = baseCoords.x;
+    setup.style.top = baseCoords.y;
+    setup.style.left = baseCoords.x;
   }
 
   function escapePressHandler(e) {
@@ -50,9 +48,9 @@
 
   dialogHandle.addEventListener('mousedown', e => {
     e.preventDefault();
-    var dragged = false;
+    let dragged = false;
 
-    var startCoords = {
+    let startCoords = {
       x: e.clientX,
       y: e.clientY
     };
@@ -61,7 +59,7 @@
       e.preventDefault();
       dragged = true;
 
-      var shift = {
+      const shift = {
         x: startCoords.x - e.clientX,
         y: startCoords.y - e.clientY
       };
@@ -71,8 +69,8 @@
         y: e.clientY
       }
 
-      userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
-      userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
+      setup.style.top = (setup.offsetTop - shift.y) + 'px';
+      setup.style.left = (setup.offsetLeft - shift.x) + 'px';
     }
 
     function mouseUpHandler(e) {
@@ -81,7 +79,7 @@
       document.removeEventListener('mouseup', mouseUpHandler);
 
       if (dragged) {
-        var clickPreventDefaultHandler = function (e) {
+        const clickPreventDefaultHandler = function (e) {
           e.preventDefault();
           dialogHandle.removeEventListener('click', clickPreventDefaultHandler);
         }
@@ -106,7 +104,7 @@
   });
 
   setupUserName.addEventListener('input', e => {
-    var target = e.target;
+    const target = e.target;
     if (target.value.length < 2) {
       target.setCustomValidity('Имя должно состоять минимум из 2-х символов');
     } else {
@@ -115,3 +113,4 @@
   });
 
 })();
+

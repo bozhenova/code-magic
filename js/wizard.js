@@ -69,10 +69,10 @@
   function colorizeWizard(e, elem, colors) {
     const newColor = getRandomData(colors);
     elem.setAttribute("value", newColor);
-    if (e.target === e.currentTarget) {
-      e.target.style = `fill: ${newColor}`;
-    } else {
+    if (e.currentTarget.matches('.setup-fireball-wrap')) {
       e.currentTarget.style.background = newColor;
+    } else {
+      e.target.style = `fill: ${newColor}`;
     }
     elem === coatColorInput ? wizard.onCoatChange(newColor) :
       wizard.onEyesChange(newColor);

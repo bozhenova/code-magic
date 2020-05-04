@@ -28,7 +28,7 @@
   }
 
   window.load = function (url, onLoad, onError) {
-    const URL = 'https://js.dump.academy/code-and-magick/data';
+    const URL = 'https://cors-anywhere.herokuapp.com/https://js.dump.academy/code-and-magick/data';
     url = URL || url;
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';

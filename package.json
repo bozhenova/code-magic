@@ -4,7 +4,8 @@
   "description": "",
   "main": "game.js",
   "scripts": {
-    "test": "eslint js/"
+    "test": "eslint js/",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
     "browser-sync": "^2.26.7",
     "eslint": "^6.6.0",
     "eslint-config-htmlacademy": "^0.5.2",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "7.0.1"
   },
   "engines": {
     "node": "8.11"
